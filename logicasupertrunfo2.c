@@ -14,6 +14,7 @@ int main(){
     int turistico1, turistico2;
     float area1, area2;
     float pib1, pib2;
+    int escolhacomparar;
 
     //criação da carta 1
     printf("Escolha uma letra para representar a primeira Carta (de A ate H): \n");
@@ -38,8 +39,8 @@ int main(){
     scanf("%d", &turistico1);
 
     //Densidade populacional, PIB per capita, carta1:
-    double DenPop1 = (float)(populacao1 / area1);
-    double PIBCap1 = (float)(pib1 / populacao1);
+    float DenPop1 = (float)(populacao1 / area1);
+    float PIBCap1 = (float)(pib1 / populacao1);
 
     //Mostrar carta 1
     printf("Estado: %s\n",estado1);
@@ -75,8 +76,8 @@ int main(){
     scanf("%d", &turistico2);
 
     //Densidade populacional, PIB per capita, carta2:
-    double DenPop2 = (float)(populacao2 / area2);
-    double PIBCap2 = (float)(pib2 / populacao2);
+    float DenPop2 = (float)(populacao2 / area2);
+    float PIBCap2 = (float)(pib2 / populacao2);
     
     //Mostrar carta 2
     printf("Estado: %s\n",estado2);
@@ -122,10 +123,123 @@ int main(){
 
     //comparação
 
-    if (populacao1>populacao2){
-        printf("A populacao de %s e maior!", nome1);
-    }else{
-        printf("A populacao de %s e maior!", nome2);
+    // if (populacao1>populacao2){
+    //     printf("A populacao de %s e maior!", nome1);
+    // }else{
+    //     printf("A populacao de %s e maior!", nome2);
+    // }
+
+    printf("###Compare as cartas!###\n");
+    printf("Qual atributo voce deseja comparar?\n");
+    printf("1. Populacao\n");
+    printf("2. Area\n");
+    printf("3. PIB\n");
+    printf("4. Pontos Turisticos\n");
+    printf("5. Densidade Populacional\n");
+    printf("6. PIB per capita\n");
+    scanf("%d", &escolhacomparar);
+
+    switch (escolhacomparar){
+    
+    case 1:
+        if (populacao1 > populacao2)
+        {
+            printf("A populacao de %s (com %lu) e maior que a populacao de %s (com %lu)\n", nome1, populacao1, nome2, populacao2);
+        } 
+        else if (populacao1 == populacao2)
+        {
+           printf("A populacao de %s (com %lu) e a mesma que de %s (com %lu)\n", nome1, populacao1, nome2, populacao2);
+        }
+        else
+        {
+            printf("A populacao de %s (com %lu) e menor que a de %s (com %lu)\n", nome1, populacao1, nome2, populacao2);
+        }
+        
+        break;
+
+    case 2:
+        if (area1 > area2)
+        {
+            printf("A area de %s (com %f) e maior que a area de %s (com %f)\n", nome1, area1, nome2, area2);
+        } 
+        else if (area1 == area2)
+        {
+           printf("A area de %s (com %f) e igual a area de %s (com %f)\n", nome1, area1, nome2, area2);
+        }
+        else
+        {
+            printf("A area de %s (com %f) e menor que a area de %s (com %f)\n", nome1, area1, nome2, area2);
+        }
+        
+        break;
+
+    case 3:
+        if (pib1 > pib2)
+        {
+            printf("O PIB de %s (com %f) e maior que o PIB de %s (com %f)\n", nome1, pib1, nome2, pib2);
+        } 
+        else if (pib1 == pib2)
+        {
+           printf("O PIB de %s (com %f) e igual ao PIB de %s (com %f)\n", nome1, pib1, nome2, pib2);
+        }
+        else
+        {
+            printf("O PIB de %s (com %f) e menor que o PIB de %s (com %f)\n", nome1, pib1, nome2, pib2);
+        }
+        
+        break;
+
+    case 4:
+        if (turistico1 > turistico2)
+        {
+            printf("Existem mais pontos turisticos em %s (com %d) do que %s (com %d)\n", nome1, turistico1, nome2, turistico2);
+        } 
+        else if (turistico1 == turistico2)
+        {
+           printf("O total de pontos turisticos em %s (com %d) e %s (com %d) sao iguais\n", nome1, turistico1, nome2, turistico2);
+        }
+        else
+        {
+            printf("Existem menos pontos turisticos em %s (com %d) do que %s (com %d)\n", nome1, turistico1, nome2, turistico2);
+        }
+        
+        break;
+
+    case 5:
+        if (DenPop1 < DenPop2)
+        {
+            printf("A Densidade populacional e MENOR em %s (com %f) do que %s (com %f)\n", nome1, DenPop1, nome2, DenPop2);
+        } 
+        else if (DenPop1 == DenPop2)
+        {
+           printf("A Densidade populacional e igual em %s (com %f) e %s (com %f)\n", nome1, DenPop1, nome2, DenPop2);
+        }
+        else
+        {
+            printf("A Densidade populacional e MAIOR em %s (com %f) do que %s (com %f)\n", nome1, DenPop1, nome2, DenPop2);
+        }
+
+        break;
+
+    case 6:
+        if (PIBCap1 > PIBCap2)
+        {
+            printf("O PIB per Cap e maior em %s (com %f) do que %s (com %f)\n", nome1, PIBCap1, nome2, PIBCap2);
+        } 
+        else if (PIBCap1 == PIBCap2)
+        {
+           printf("O PIB per Cap e igual em %s (com %f) e %s (com %f)\n", nome1, PIBCap1, nome2, PIBCap2);
+        }
+        else
+        {
+            printf("O PIB per Cap e menor em %s (com %f) do que %s (com %f)\n", nome1, PIBCap1, nome2, PIBCap2);
+        }
+
+        break;
+
+    default:
+        printf("Escolha invalida.");
+        break;
     }
 
     return 0;
